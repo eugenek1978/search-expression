@@ -1,5 +1,7 @@
 package com.yevgeniy;
 
+import static com.yevgeniy.Type.*;
+
 public class SearchLexer implements Lexer {
     private String searchString;
     private char currentChar;
@@ -24,15 +26,33 @@ public class SearchLexer implements Lexer {
                 return reservedWord();
             }
 
+            if (currentChar == '('){
+                advance();
+                return leftParentheses();
+            }
+
+            if (currentChar == ')'){
+                advance();
+                return rightParentheses();
+            }
+
             if (currentChar == '\'') {
                 advance();
-                return new Token(Type.PHRASE, phrase());
+                return new Token(PHRASE, phrase());
             }
 
             throw new Exception("Invalid character");
         }
 
-        return new Token(Type.EOS,"\0");
+        return new Token(EOS,"\0");
+    }
+
+    private Token rightParentheses() {
+        return new Token(RPAREN, ")");
+    }
+
+    private Token leftParentheses() {
+        return new Token(LPAREN, "(");
     }
 
     private Token reservedWord() {
@@ -62,12 +82,12 @@ public class SearchLexer implements Lexer {
     }
 
     private String phrase() {
-        StringBuilder strb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         while (currentChar != '\'') {
-            strb.append(currentChar);
+            sb.append(currentChar);
             advance();
         }
         advance();
-        return strb.toString();
+        return sb.toString();
     }
 }

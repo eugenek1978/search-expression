@@ -14,7 +14,9 @@ class SearchLexerTest {
             "\"  'Yoav'  \" ,PHRASE, Yoav ",
             "\" NOT  \", NOT, NOT",
             "\" OR  \", OR, OR",
-            "\" AND  \", AND, AND"})
+            "\" AND  \", AND, AND",
+            "\" (  \", LPAREN, ( ",
+            "\" ) \", RPAREN, ) "})
     void get_next_token_simple_token( ArgumentsAccessor argumentsAccessor) throws Exception {
         String searchString = removeQuotes(argumentsAccessor.getString(0));
 
