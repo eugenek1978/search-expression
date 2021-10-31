@@ -62,7 +62,7 @@ public class SearchLexer implements Lexer {
             advance();
         }
 
-        Type type = Type.valueOf(sb.toString());
+        Type type = valueOf(sb.toString());
 
         return new Token(type, sb.toString());
     }
