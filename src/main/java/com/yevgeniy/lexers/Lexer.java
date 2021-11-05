@@ -1,4 +1,4 @@
-package com.yevgeniy;
+package com.yevgeniy.lexers;
 
 public interface Lexer {
 

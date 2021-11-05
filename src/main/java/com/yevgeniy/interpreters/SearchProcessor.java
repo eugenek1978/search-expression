@@ -1,4 +1,9 @@
-package com.yevgeniy;
+package com.yevgeniy.interpreters;
+
+import com.yevgeniy.lexers.Lexer;
+import com.yevgeniy.lexers.SearchLexer;
+import com.yevgeniy.parsers.Parser;
+import com.yevgeniy.parsers.SearchParser;
 
 public class SearchProcessor {
 

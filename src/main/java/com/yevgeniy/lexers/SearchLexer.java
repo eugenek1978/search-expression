@@ -1,6 +1,6 @@
-package com.yevgeniy;
+package com.yevgeniy.lexers;
 
-import static com.yevgeniy.Type.*;
+import static com.yevgeniy.lexers.Type.*;
 
 public class SearchLexer implements Lexer {
     private String searchString;

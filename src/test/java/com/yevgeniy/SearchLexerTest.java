@@ -1,5 +1,9 @@
 package com.yevgeniy;
 
+import com.yevgeniy.lexers.Lexer;
+import com.yevgeniy.lexers.SearchLexer;
+import com.yevgeniy.lexers.Token;
+import com.yevgeniy.lexers.Type;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
