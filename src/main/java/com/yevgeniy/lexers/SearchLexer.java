@@ -1,5 +1,8 @@
 package com.yevgeniy.lexers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.yevgeniy.lexers.Type.*;
 
 public class SearchLexer implements Lexer {
@@ -7,14 +10,12 @@ public class SearchLexer implements Lexer {
     private char currentChar;
     private int position;
 
-    public SearchLexer(String searchString) {
-        this.searchString = searchString;
+    public SearchLexer() {
         this.position = 0;
-        this.currentChar = searchString.charAt(this.position);
     }
 
     @Override
-    public Token get_next_token() throws Exception {
+    public Token getNextToken() throws Exception {
 
         while (currentChar != '\0') {
             if (Character.isSpaceChar(currentChar)){
@@ -45,6 +46,21 @@ public class SearchLexer implements Lexer {
         }
 
         return new Token(EOS,"\0");
+    }
+
+    @Override
+    public List<Token> tokenize(String text) throws Exception {
+        List<Token> tokens = new ArrayList<>();
+        searchString = text;
+        currentChar = searchString.charAt(0);
+        Token currentToken = getNextToken();
+        while (currentToken.getType() != EOS )
+        {
+            tokens.add(currentToken);
+            currentToken = getNextToken();
+        }
+
+        return tokens;
     }
 
     private Token rightParentheses() {

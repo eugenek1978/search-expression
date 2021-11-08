@@ -24,4 +24,12 @@ public class Token {
     public int hashCode() {
         return Objects.hash(type, value);
     }
+
+    public Type getType() {
+        return type;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }

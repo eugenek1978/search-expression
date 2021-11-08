@@ -1,4 +1,4 @@
-package com.yevgeniy.visitor;
+package com.yevgeniy.parsers.visitor;
 
 import java.util.HashMap;
 import java.util.Map;

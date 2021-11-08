@@ -1,7 +1,11 @@
 package com.yevgeniy.lexers;
 
+import java.util.List;
+
 public interface Lexer {
 
-    public Token get_next_token() throws Exception;
+     Token getNextToken() throws Exception;
+
+     List<Token> tokenize (String text) throws Exception;
 
 }
