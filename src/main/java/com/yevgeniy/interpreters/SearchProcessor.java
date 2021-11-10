@@ -8,7 +8,6 @@ import com.yevgeniy.parsers.SearchParser;
 public class SearchProcessor {
 
     public void process (String searchString) {
-        Lexer searchLexer = new SearchLexer();
-        Parser searchParser = new SearchParser(searchLexer);
+
     }
 }

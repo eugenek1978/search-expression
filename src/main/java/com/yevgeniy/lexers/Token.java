@@ -1,16 +1,16 @@
 package com.yevgeniy.lexers;
 
+import lombok.Builder;
+import lombok.Data;
+
 import java.util.Objects;
 
+@Data
+@Builder
 public class Token {
 
     Type type;
     String value;
-
-    public Token(Type type, String value) {
-        this.type = type;
-        this.value = value;
-    }
 
     @Override
     public boolean equals(Object o) {
