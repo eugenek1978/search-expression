@@ -6,6 +6,6 @@ import com.yevgeniy.parsers.ast.AST;
 import java.util.List;
 
 public interface Parser {
-    AST parse (List<Token> tokens);
+    AST parse (List<Token> tokens) throws Exception;
 
 }
