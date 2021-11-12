@@ -172,6 +172,46 @@ class SearchParserTest {
     }
 
     @Test
+    void parse_LPAREN_Hello_OR_World_RPAREN_AND_World() throws Exception {
+        Parser parser = new SearchParser();
+        Token hello = Token.builder().value("Hello").type(Type.PHRASE).build();
+        Token world = Token.builder().value("World").type(Type.PHRASE).build();
+        Token or = Token.builder().value("OR").type(Type.OR).build();
+        Token lparen = Token.builder().value("(").type(Type.LPAREN).build();
+        Token rparen = Token.builder().value(")").type(Type.RPAREN).build();
+        Token and = Token.builder().value("AND").type(Type.AND).build();
+
+
+        AST expected =
+                BinOperator.builder()
+                        .leftChild(
+                                BinOperator.builder()
+                                        .leftChild(Phrase.builder().value(hello).build())
+                                        .rightChild(Phrase.builder().value(world).build())
+                                        .value(or)
+                                        .build()
+                        )
+                        .value(and)
+                        .rightChild(
+                                Phrase.builder().value(world).build()
+                        )
+                        .build();
+
+        List<Token> tokens = new ArrayList<>();
+        tokens.add(lparen);
+        tokens.add(hello);
+        tokens.add(or);
+        tokens.add(world);
+        tokens.add(rparen);
+        tokens.add(and);
+        tokens.add(world);
+
+        AST actual = parser.parse(tokens);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void parse_AND_OR_invalid_syntax_exception() throws Exception {
         Parser parser = new SearchParser();
         Token and = Token.builder().value("AND").type(Type.AND).build();
@@ -182,6 +222,6 @@ class SearchParserTest {
         tokens.add(and);
         tokens.add(or);
 
-        assertThrows(Exception.class,()-> parser.parse(tokens));
+        assertThrows(Exception.class, () -> parser.parse(tokens));
     }
 }

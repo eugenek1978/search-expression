@@ -33,7 +33,6 @@ public class SearchParser implements Parser {
                             .value(operator)
                             .build();
         }
-
         return node;
     }
 
@@ -62,6 +61,23 @@ public class SearchParser implements Parser {
     }
 
     private AST phrase() throws Exception {
-        return Phrase.builder().value(eat(Type.PHRASE)).build();
+
+            if  (tokens.get(position).getType() == Type.LPAREN) {
+                eat(Type.LPAREN);
+                AST node = or_expression();
+                eat(Type.RPAREN);
+                return node;
+            }
+            else if  (tokens.get(position).getType() == Type.PHRASE) {
+                return Phrase.builder()
+                        .value(
+                                eat(Type.PHRASE)
+                        )
+                        .build();
+            }
+            else {
+                throw new Exception();
+            }
+
     }
 }
