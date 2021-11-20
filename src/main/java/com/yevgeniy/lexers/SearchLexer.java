@@ -1,9 +1,12 @@
 package com.yevgeniy.lexers;
 
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.yevgeniy.lexers.Type.*;
+
 
 public class SearchLexer implements Lexer {
     private String searchString;
@@ -51,8 +54,9 @@ public class SearchLexer implements Lexer {
     @Override
     public List<Token> tokenize(String text) throws Exception {
         List<Token> tokens = new ArrayList<>();
+        position = 0;
         searchString = text;
-        currentChar = searchString.charAt(0);
+        currentChar = searchString.charAt(position);
         Token currentToken = getNextToken();
         while (currentToken.getType() != EOS )
         {
