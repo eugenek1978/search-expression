@@ -1,12 +1,9 @@
 package com.yevgeniy.lexers;
 
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.yevgeniy.lexers.Type.*;
-
 
 public class SearchLexer implements Lexer {
     private String searchString;

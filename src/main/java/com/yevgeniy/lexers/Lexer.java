@@ -6,6 +6,6 @@ public interface Lexer {
 
      Token getNextToken() throws Exception;
 
-     List<Token> tokenize (String text) throws Exception;
+     List<Token>  tokenize (String text) throws Exception;
 
 }
