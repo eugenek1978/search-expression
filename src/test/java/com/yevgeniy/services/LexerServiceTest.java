@@ -18,11 +18,11 @@ class LexerServiceTest {
 
 
     @Autowired
-    LexerService lexerService;
+    LexerServiceImpl lexerService;
 
     @Test
     void multipleLexerServiceCalls() {
-        List<List<Token>> expectedResult = new ArrayList();
+        List<List<Token>> expectedResult = new ArrayList<>();
         int size = 100000;
 
         List<List<Token>> actualResult = IntStream.range(0, size).parallel()

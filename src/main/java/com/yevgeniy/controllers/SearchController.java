@@ -1,5 +1,6 @@
 package com.yevgeniy.controllers;
 
+import com.yevgeniy.controllers.dto.SearchRequestDto;
 import com.yevgeniy.lexers.Token;
 import com.yevgeniy.services.LexerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,9 @@ public class SearchController {
     @Autowired
     LexerService lexerService;
 
-    @PostMapping("api/tokenize")
-    public List<Token> tokenize (@RequestBody String searchString) throws Exception {
-        return lexerService.tokenize(searchString);
+    @PostMapping("/api/tokens")
+    public List<Token> getTokens (@RequestBody SearchRequestDto searchRequest) throws Exception {
+        return lexerService.tokenize(searchRequest.getSearchString());
     }
 
 }
