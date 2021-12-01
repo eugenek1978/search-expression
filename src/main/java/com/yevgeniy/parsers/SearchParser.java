@@ -19,24 +19,24 @@ public class SearchParser implements Parser {
     @Override
     public AST parse(List<Token> tokens) throws Exception {
         this.tokens = tokens;
-        return or_expression();
+        return orExpression();
     }
 
-    private AST or_expression() throws Exception {
-        AST node = and_expression();
+    private AST orExpression() throws Exception {
+        AST node = andExpression();
         while (position < tokens.size() && tokens.get(position).getType() == Type.OR){
             Token operator = eat(Type.OR);
             node =
                     BinOperator.builder()
                             .leftChild(node)
-                            .rightChild(and_expression())
+                            .rightChild(andExpression())
                             .value(operator)
                             .build();
         }
         return node;
     }
 
-    private AST and_expression() throws Exception {
+    private AST andExpression() throws Exception {
         AST node = phrase();
 
         while (position < tokens.size() && tokens.get(position).getType() == Type.AND){
@@ -64,7 +64,7 @@ public class SearchParser implements Parser {
 
             if  (tokens.get(position).getType() == Type.LPAREN) {
                 eat(Type.LPAREN);
-                AST node = or_expression();
+                AST node = orExpression();
                 eat(Type.RPAREN);
                 return node;
             }

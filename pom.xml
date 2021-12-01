@@ -20,8 +20,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- API Documentation -->
-            <!-- Fix wrong resolved `spring-plugin-core` dependency version for springfox -->
             <dependency>
                 <groupId>org.springframework.plugin</groupId>
                 <artifactId>spring-plugin-core</artifactId>
@@ -72,7 +70,6 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>

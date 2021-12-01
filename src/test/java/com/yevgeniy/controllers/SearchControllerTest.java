@@ -3,7 +3,6 @@ package com.yevgeniy.controllers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -26,7 +25,7 @@ class SearchControllerTest {
     }
 
     @Test
-    public void PostTokenizeShouldReturnOkResponse() throws Exception {
+    void PostTokenizeShouldReturnOkResponse() throws Exception {
         mockMvc.perform(post("/api/tokenize").content("'Hello World'"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }

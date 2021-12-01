@@ -19,7 +19,6 @@ public interface Visitor<R> {
 			}
 		};
 		consumer.accept(visitorBuilder);
-		System.out.println("Registry: " + registry.keySet());
 		return o -> registry.get(o.getClass()).apply(o);
 	}
 	

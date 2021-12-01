@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class LexerServiceTest {
+class LexerServiceTest {
 
 
     @Autowired
